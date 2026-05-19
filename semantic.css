@@ -1,0 +1,1566 @@
+/* ============================================================
+   Semantic CSS — Classless / Semantic HTML Styling Library
+   ============================================================
+   Theme system: DaisyUI-compatible CSS variables
+   Variables per theme (29 total):
+     color-scheme
+     --color-base-100, --color-base-200, --color-base-300, --color-base-content
+     --color-primary, --color-primary-content
+     --color-secondary, --color-secondary-content
+     --color-accent, --color-accent-content
+     --color-neutral, --color-neutral-content
+     --color-info, --color-info-content
+     --color-success, --color-success-content
+     --color-warning, --color-warning-content
+     --color-error, --color-error-content
+     --radius-selector, --radius-field, --radius-box
+     --size-selector, --size-field
+     --border, --depth, --noise
+
+   DaisyUI color usage rules (mirrored here):
+     - Inputs/fields use bg-base-100 (page surface), border via color-mix
+     - Buttons default to bg-base-200 (elevated), not primary
+     - Borders use color-mix(in oklab, var(--color-base-content) 20%, #0000)
+     - Focus: 2px solid outline with 2px offset
+     - Disabled: bg-base-200, text at 40% opacity
+
+   Conditional scoping:
+     - Theme variable blocks remain global (defined on :root / [data-theme])
+     - All element styling rules are scoped inside .semantic container
+     - Add class="semantic" to any container to activate styling
+     - Ideal for mixed-style environments where semantic.css coexists
+       with other stylesheets or unstyled content
+   ============================================================ */
+
+/* ============================================================
+   THEME: light (default)
+   Values from DaisyUI v5.5.19 light theme
+   ============================================================ */
+[data-theme="light"],
+:root:not([data-theme]) {
+  color-scheme: light;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(98% 0 0);
+  --color-base-300: oklch(95% 0 0);
+  --color-base-content: oklch(21% 0.006 285.885);
+  --color-primary: oklch(45% 0.24 277.023);
+  --color-primary-content: oklch(93% 0.034 272.788);
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(77% 0.152 181.912);
+  --color-accent-content: oklch(38% 0.063 188.416);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* ============================================================
+   THEME: dark
+   Values from DaisyUI v5.5.19 dark theme
+   ============================================================ */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --color-base-100: oklch(25.33% 0.016 252.42);
+  --color-base-200: oklch(23.26% 0.014 253.1);
+  --color-base-300: oklch(21.15% 0.012 254.09);
+  --color-base-content: oklch(97.807% 0.029 256.847);
+  --color-primary: oklch(58% 0.233 277.117);
+  --color-primary-content: oklch(96% 0.018 272.314);
+  --color-secondary: oklch(65% 0.241 354.308);
+  --color-secondary-content: oklch(94% 0.028 342.258);
+  --color-accent: oklch(77% 0.152 181.912);
+  --color-accent-content: oklch(38% 0.063 188.416);
+  --color-neutral: oklch(14% 0.005 285.823);
+  --color-neutral-content: oklch(92% 0.004 286.32);
+  --color-info: oklch(74% 0.16 232.661);
+  --color-info-content: oklch(29% 0.066 243.157);
+  --color-success: oklch(76% 0.177 163.223);
+  --color-success-content: oklch(37% 0.077 168.94);
+  --color-warning: oklch(82% 0.189 84.429);
+  --color-warning-content: oklch(41% 0.112 45.904);
+  --color-error: oklch(71% 0.194 13.428);
+  --color-error-content: oklch(27% 0.105 12.094);
+  --radius-selector: 0.5rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* ============================================================
+   THEME: dracula (extension example)
+   Values from DaisyUI v5.5.19 dracula theme
+   Uncomment and use by setting <html data-theme="dracula">
+   ============================================================ */
+/*
+[data-theme="dracula"] {
+  color-scheme: dark;
+  --color-base-100: oklch(28.822% 0.022 277.508);
+  --color-base-200: oklch(26.805% 0.02 277.508);
+  --color-base-300: oklch(24.787% 0.019 277.508);
+  --color-base-content: oklch(97.747% 0.007 106.545);
+  --color-primary: oklch(75.461% 0.183 346.812);
+  --color-primary-content: oklch(15.092% 0.036 346.812);
+  --color-secondary: oklch(74.202% 0.148 301.883);
+  --color-secondary-content: oklch(14.84% 0.029 301.883);
+  --color-accent: oklch(83.392% 0.124 66.558);
+  --color-accent-content: oklch(16.678% 0.024 66.558);
+  --color-neutral: oklch(39.445% 0.032 275.524);
+  --color-neutral-content: oklch(87.889% 0.006 275.524);
+  --color-info: oklch(88.263% 0.093 212.846);
+  --color-info-content: oklch(17.652% 0.018 212.846);
+  --color-success: oklch(87.099% 0.219 148.024);
+  --color-success-content: oklch(17.419% 0.043 148.024);
+  --color-warning: oklch(95.533% 0.134 112.757);
+  --color-warning-content: oklch(19.106% 0.026 112.757);
+  --color-error: oklch(68.22% 0.206 24.43);
+  --color-error-content: oklch(13.644% 0.041 24.43);
+  --radius-selector: 1rem;
+  --radius-field: 0.5rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+*/
+
+/* ============================================================
+   THEME: nord (extension example)
+   Values from DaisyUI v5.5.19 nord theme
+   Uncomment and use by setting <html data-theme="nord">
+   ============================================================ */
+/*
+[data-theme="nord"] {
+  color-scheme: light;
+  --color-base-100: oklch(95.127% 0.007 260.731);
+  --color-base-200: oklch(93.299% 0.01 261.788);
+  --color-base-300: oklch(89.925% 0.016 262.749);
+  --color-base-content: oklch(32.437% 0.022 264.182);
+  --color-primary: oklch(59.435% 0.077 254.027);
+  --color-primary-content: oklch(11.887% 0.015 254.027);
+  --color-secondary: oklch(69.651% 0.059 248.687);
+  --color-secondary-content: oklch(13.93% 0.011 248.687);
+  --color-accent: oklch(77.464% 0.062 217.469);
+  --color-accent-content: oklch(15.492% 0.012 217.469);
+  --color-neutral: oklch(45.229% 0.035 264.131);
+  --color-neutral-content: oklch(89.925% 0.016 262.749);
+  --color-info: oklch(69.207% 0.062 332.664);
+  --color-info-content: oklch(13.841% 0.012 332.664);
+  --color-success: oklch(76.827% 0.074 131.063);
+  --color-success-content: oklch(15.365% 0.014 131.063);
+  --color-warning: oklch(85.486% 0.089 84.093);
+  --color-warning-content: oklch(17.097% 0.017 84.093);
+  --color-error: oklch(60.61% 0.12 15.341);
+  --color-error-content: oklch(12.122% 0.024 15.341);
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+*/
+
+/* ============================================================
+   AUTO-DETECT: prefers-color-scheme fallback
+   When no [data-theme] is set on <html>, respect system preference
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --color-base-100: oklch(25.33% 0.016 252.42);
+    --color-base-200: oklch(23.26% 0.014 253.1);
+    --color-base-300: oklch(21.15% 0.012 254.09);
+    --color-base-content: oklch(97.807% 0.029 256.847);
+    --color-primary: oklch(58% 0.233 277.117);
+    --color-primary-content: oklch(96% 0.018 272.314);
+  }
+}
+
+/* ============================================================
+   SCOPED STYLES — only active inside .semantic container
+   All element rules below are scoped to .semantic descendants.
+   Theme variables above remain global.
+   ============================================================ */
+
+/* ============================================================
+   RESET & BASE
+   Minimal reset inspired by DaisyUI / Tailwind preflight
+   ============================================================ */
+.semantic,
+.semantic *,
+.semantic *::before,
+.semantic *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid;
+}
+
+.semantic {
+  line-height: 1.5;
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  -webkit-tap-highlight-color: transparent;
+  scroll-behavior: smooth;
+  background-color: var(--color-base-100);
+  color: var(--color-base-content);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Smooth theme transitions on themed elements */
+.semantic[data-theme] {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ============================================================
+   LAYOUT STRUCTURE
+   ============================================================ */
+.semantic main {
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.semantic header,
+.semantic footer {
+  max-width: 65ch;
+  margin-inline: auto;
+  padding: 1rem;
+}
+
+.semantic header {
+  border-bottom: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}
+
+.semantic footer {
+  border-top: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  /*margin-top: 2rem;*/
+}
+
+/*.semantic section, .semantic article { margin-block: 2rem; }*/
+
+/* ============================================================
+   ARTICLE — PicoCSS-inspired card with DaisyUI colors
+   ============================================================ */
+.semantic article {
+  margin-block: 1.5rem;
+  padding: 1.25rem;
+  background-color: var(--color-base-100);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  border-radius: var(--radius-box);
+}
+
+.semantic article > h2:first-child,
+.semantic article > h3:first-child {
+  margin-block-start: 0;
+}
+
+.semantic article > footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}
+
+.semantic article > footer small {
+  opacity: 0.7;
+}
+
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
+.semantic hgroup {
+  margin-bottom: 1rem;
+}
+
+.semantic hgroup h1 {
+  margin-bottom: 0.25rem;
+}
+
+.semantic hgroup p {
+  color: var(--color-base-content);
+  opacity: 0.7;
+}
+
+.semantic nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding-inline-start: 0;
+}
+
+.semantic nav ul li {
+  list-style: none;
+}
+
+.semantic nav ul li a {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--radius-field);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  color: var(--color-base-content);
+  text-decoration: none;
+  font-size: 0.875rem;
+  background-color: var(--color-base-100);
+  transition: background-color 0.2s ease, color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.semantic nav ul li a:hover {
+  background-color: var(--color-base-200);
+}
+
+.semantic nav ul li a[aria-current="true"] {
+  background-color: var(--color-primary);
+  color: var(--color-primary-content);
+  border-color: var(--color-primary);
+}
+
+/* ============================================================
+   TYPOGRAPHY — HEADINGS
+   ============================================================ */
+.semantic h1,
+.semantic h2,
+.semantic h3,
+.semantic h4,
+.semantic h5,
+.semantic h6 {
+  color: var(--color-base-content);
+  line-height: 1.2;
+  margin-block: 1.5rem 0.75rem;
+}
+
+.semantic h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+}
+
+.semantic h2 {
+  font-size: clamp(1.375rem, 3vw, 1.75rem);
+  font-weight: 700;
+}
+
+.semantic h3 {
+  font-size: clamp(1.125rem, 2.5vw, 1.375rem);
+  font-weight: 600;
+}
+
+.semantic h4 {
+  font-size: clamp(1rem, 2vw, 1.125rem);
+  font-weight: 600;
+}
+
+.semantic h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.semantic h6 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   TYPOGRAPHY — PARAGRAPHS & TEXT
+   ============================================================ */
+.semantic p {
+  margin-block: 0.75rem 0;
+}
+
+/* ============================================================
+   TYPOGRAPHY — INLINE ELEMENTS
+   ============================================================ */
+.semantic a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.semantic a:hover {
+  opacity: 0.8;
+}
+
+.semantic strong {
+  font-weight: 700;
+}
+
+.semantic em {
+  font-style: italic;
+}
+
+.semantic u {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.semantic del {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.semantic ins {
+  text-decoration: none;
+  background-color: var(--color-success);
+  color: var(--color-success-content);
+}
+
+.semantic s {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.semantic small {
+  font-size: 0.875em;
+  opacity: 0.7;
+}
+
+.semantic sub,
+.semantic sup {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+}
+
+.semantic sub {
+  bottom: 0.25em;
+}
+
+.semantic sup {
+  top: -0.5em;
+}
+
+.semantic abbr[title],
+.semantic abbr[data-tooltip] {
+  text-decoration: underline dotted var(--color-base-content);
+  text-underline-offset: 2px;
+  cursor: help;
+}
+
+.semantic kbd {
+  display: inline-block;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  background-color: var(--color-base-200);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  border-radius: var(--radius-field);
+  box-shadow: 0 1px 0
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+}
+
+.semantic mark {
+  background-color: var(--color-warning);
+  color: var(--color-warning-content);
+  padding: 0.125em 0.25em;
+  border-radius: var(--radius-field);
+}
+
+/* ============================================================
+   TYPOGRAPHY — LISTS
+   ============================================================ */
+.semantic ul,
+.semantic ol {
+  padding-inline-start: 1.5rem;
+  margin-block: 0.75rem;
+}
+
+.semantic ul li {
+  list-style: square;
+}
+
+.semantic li {
+  margin-block: 0.25rem;
+}
+
+.semantic ul ul,
+.semantic ul ol,
+.semantic ol ul,
+.semantic ol ol {
+  margin-block: 0;
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+.semantic blockquote {
+  margin-block: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--color-primary);
+  background-color: var(--color-base-200);
+  border-radius: 0 var(--radius-field) var(--radius-field) 0;
+  font-style: italic;
+}
+
+.semantic blockquote footer {
+  margin-top: 0.75rem;
+  font-style: normal;
+  font-size: 0.875em;
+  opacity: 0.7;
+}
+
+.semantic blockquote footer cite {
+  font-style: italic;
+}
+
+/* ============================================================
+   FIGURE / IMAGE
+   ============================================================ */
+.semantic figure {
+  margin-block: 1.5rem;
+}
+
+.semantic figure img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-box);
+}
+
+.semantic figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.875em;
+  opacity: 0.7;
+  text-align: center;
+}
+
+/* ============================================================
+   FORM — BASE ELEMENTS
+   DaisyUI pattern: inputs use bg-base-100 (page surface),
+   border via color-mix for adaptive contrast
+   ============================================================ */
+.semantic form {
+  margin-block: 1rem 0;
+}
+
+.semantic form > * {
+  margin-block-end: 0.75rem;
+}
+
+.semantic label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-base-content);
+}
+
+.semantic input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not(
+    [type="color"]
+  ):not([type="file"]),
+.semantic select,
+.semantic textarea {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--color-base-content);
+  background-color: var(--color-base-100);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  border-radius: var(--radius-field);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.semantic input:focus-visible,
+.semantic select:focus-visible,
+.semantic textarea:focus-visible {
+  border-color: var(--color-base-content);
+  outline: 2px solid var(--color-base-content);
+  outline-offset: 2px;
+}
+
+.semantic ::placeholder {
+  color: var(--color-base-content);
+  opacity: 0.4;
+}
+
+/* Helper text (small after input) */
+.semantic input + small,
+.semantic select + small,
+.semantic textarea + small {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  opacity: 0.6;
+}
+
+/* ============================================================
+   FORM — CHECKBOX & RADIO
+   DaisyUI checkbox pattern: p-1, rounded-selector, ::before checkmark
+   Primary checkbox: --input-color = primary, text = primary-content
+   ============================================================ */
+.semantic input[type="checkbox"]:not([role="switch"]) {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0;
+  flex-shrink: 0;
+  padding: 0.25rem;
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  border-radius: var(--radius-selector);
+  background-color: var(--color-base-100);
+  color: var(--color-primary-content);
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow:
+    0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1)) inset;
+}
+
+/* Checkmark ::before — always present, invisible when unchecked */
+.semantic input[type="checkbox"]:not([role="switch"])::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-color: currentColor;
+  opacity: 0;
+  rotate: 45deg;
+  transition:
+    clip-path 0.3s,
+    opacity 0.1s,
+    rotate 0.3s;
+  transition-delay: 0.1s;
+  clip-path: polygon(
+    20% 100%,
+    20% 80%,
+    50% 80%,
+    50% 80%,
+    70% 80%,
+    70% 100%
+  );
+}
+
+/* Checked state: fill with primary, show checkmark */
+.semantic input[type="checkbox"]:not([role="switch"]):checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow:
+    0 1px oklch(0% 0 0 / calc(var(--depth) * 0.1));
+}
+
+.semantic input[type="checkbox"]:not([role="switch"]):checked::before {
+  opacity: 1;
+  clip-path: polygon(
+    20% 100%,
+    20% 80%,
+    50% 80%,
+    50% 0%,
+    70% 0%,
+    70% 100%
+  );
+}
+
+.semantic input[type="checkbox"]:not([role="switch"]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.semantic input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0;
+  flex-shrink: 0;
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  border-radius: 50%;
+  background-color: var(--color-base-100);
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.semantic input[type="radio"]:checked {
+  border-color: var(--color-primary);
+  border-width: 0.35rem;
+}
+
+.semantic input[type="radio"]:focus-visible {
+  outline: 2px solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   FORM — SWITCH (role="switch")
+   DaisyUI toggle pattern: color-mix border, primary when checked
+   ============================================================ */
+.semantic input[type="checkbox"][role="switch"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 2.75rem;
+  height: 1.5rem;
+  margin: 0;
+  flex-shrink: 0;
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 50%, transparent);
+  border-radius: 1rem;
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.semantic input[type="checkbox"][role="switch"]::after {
+  content: "";
+  position: absolute;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 50%;
+  background-color: var(--color-base-content);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.semantic input[type="checkbox"][role="switch"]:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.semantic input[type="checkbox"][role="switch"]:checked::after {
+  transform: translateX(1.25rem);
+  background-color: var(--color-primary-content);
+}
+
+.semantic input[type="checkbox"][role="switch"]:focus-visible {
+  outline: 2px solid var(--color-base-content);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   FORM — LABEL WITH INLINE INPUTS
+   ============================================================ */
+.semantic label:has(input[type="checkbox"]),
+.semantic label:has(input[type="radio"]),
+.semantic label:has(input[role="switch"]) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+/* ============================================================
+   FORM — FIELDSET & LEGEND
+   ============================================================ */
+.semantic fieldset {
+  /*margin-block: 1rem 0.5rem;*/
+  /*padding: 1rem;*/
+  /*border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  border-radius: var(--radius-box);*/
+}
+
+.semantic legend {
+  padding: 0 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-base-content);
+}
+
+.semantic fieldset > label {
+  margin-block: 0.375rem 0;
+}
+
+/* ============================================================
+   FORM — GROUPED INPUTS (fieldset[role="group"])
+   DaisyUI join: inline-flex items-stretch, per-item border,
+   negative margin overlaps borders, corner radii via logical props
+   ============================================================ */
+.semantic fieldset[role="group"] {
+  display: inline-flex;
+  align-items: stretch;
+  margin-block: 0.75rem;
+}
+
+/* Each join item keeps its own border, position for z-index */
+.semantic fieldset[role="group"] > * {
+  border-radius: 0;
+  position: relative;
+}
+
+/* First child: left corners rounded */
+.semantic fieldset[role="group"] > :first-child {
+  border-start-start-radius: var(--radius-field);
+  border-end-start-radius: var(--radius-field);
+}
+
+/* Last child: right corners rounded */
+.semantic fieldset[role="group"] > :last-child {
+  border-start-end-radius: var(--radius-field);
+  border-end-end-radius: var(--radius-field);
+}
+
+/* Only child: all corners rounded */
+.semantic fieldset[role="group"] > :only-child {
+  border-radius: var(--radius-field);
+}
+
+/* Negative margin eliminates double borders between items */
+.semantic fieldset[role="group"] > *:not(:first-child) {
+  margin-inline-start: calc(var(--border) * -1);
+}
+
+/* Focus/hover z-index for proper stacking */
+.semantic fieldset[role="group"] > :focus,
+.semantic fieldset[role="group"] > :has(:focus) {
+  z-index: 1;
+}
+
+@media (hover: hover) {
+  .semantic fieldset[role="group"] > button:hover,
+  .semantic fieldset[role="group"] > :has(button:hover) {
+    isolation: isolate;
+    z-index: 2;
+  }
+}
+
+/* ============================================================
+   FORM — SPECIAL INPUT TYPES
+   ============================================================ */
+/* File browser label: text above input */
+.semantic label:has(input[type="file"]) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.semantic input[type="file"] {
+  width: 100%;
+  padding: 0.375rem;
+  font-size: 0.875rem;
+  background-color: var(--color-base-100);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  border-radius: var(--radius-field);
+  cursor: pointer;
+}
+
+.semantic input[type="file"]::file-selector-button {
+  padding: 0.375rem 0.75rem;
+  margin-inline-end: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-base-content);
+  background-color: var(--color-base-200);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  border-radius: calc(var(--radius-field) * 0.75);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.semantic input[type="file"]::file-selector-button:hover {
+  background-color: var(--color-base-300);
+}
+
+.semantic input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+  background: color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  outline: none;
+  cursor: pointer;
+}
+
+.semantic input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 2px solid var(--color-primary-content);
+  transition: transform 0.2s ease;
+}
+
+.semantic input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.semantic input[type="range"]::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: 2px solid var(--color-primary-content);
+}
+
+.semantic input[type="range"]:focus-visible {
+  outline: 2px solid var(--color-base-content);
+  outline-offset: 2px;
+}
+
+/* Color label: text above input */
+.semantic label:has(input[type="color"]) {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.semantic input[type="color"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  /*height: auto;*/
+  min-height: 2.5rem;
+  padding: 0.125rem;
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  border-radius: var(--radius-field);
+  background-color: var(--color-base-100);
+  cursor: pointer;
+}
+
+.semantic input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0.125rem;
+}
+
+.semantic input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: calc(var(--radius-field) * 0.75);
+}
+
+.semantic input[type="date"],
+.semantic input[type="time"] {
+  min-width: 12rem;
+}
+
+.semantic input[type="search"] {
+  border-radius: var(--radius-field);
+  padding-left: 2.125rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 24 24' stroke='%23888' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.75rem center;
+  background-size: 1.25rem;
+}
+
+/* Select — DaisyUI select component
+   Chevron via dual-gradient: two 4px triangles forming ↓
+   Uses currentColor so chevron adapts to text color theme */
+.semantic select {
+  padding-right: 1.75rem;
+  font-size: 0.875rem;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(1px + 50%),
+    calc(100% - 16.1px) calc(1px + 50%);
+  background-size: 4px 4px;
+  background-repeat: no-repeat;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ============================================================
+   FORM — INPUT STATES
+   DaisyUI pattern: disabled = bg-base-200, text 40% opacity
+   Focus: 2px solid outline with 2px offset
+   ============================================================ */
+.semantic input[aria-invalid="true"],
+.semantic select[aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.semantic input[aria-invalid="true"]:focus-visible,
+.semantic select[aria-invalid="true"]:focus-visible {
+  outline-color: var(--color-error);
+}
+
+.semantic input[aria-invalid="false"] {
+  border-color: var(--color-success);
+}
+
+.semantic input[aria-invalid="false"]:focus-visible {
+  outline-color: var(--color-success);
+}
+
+.semantic input:disabled,
+.semantic select:disabled,
+.semantic textarea:disabled,
+.semantic button:disabled {
+  background-color: var(--color-base-200);
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   BUTTONS
+   DaisyUI pattern: default button = bg-base-200 (elevated surface),
+   not primary. Primary only for .btn-primary equivalent.
+   ============================================================ */
+.semantic button,
+.semantic input[type="submit"],
+.semantic input[type="button"] {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-base-content);
+  background-color: var(--color-base-200);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-200), #000 calc(var(--depth) * 5%));
+  border-radius: var(--radius-field);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    opacity 0.2s ease, transform 0.1s ease;
+}
+
+.semantic button:hover,
+.semantic input[type="submit"]:hover,
+.semantic input[type="button"]:hover {
+  background-color: color-mix(
+    in oklab,
+    var(--color-base-200),
+    #000 7%
+  );
+}
+
+.semantic button:active,
+.semantic input[type="submit"]:active,
+.semantic input[type="button"]:active {
+  transform: scale(0.98);
+  background-color: color-mix(
+    in oklab,
+    var(--color-base-200),
+    #000 5%
+  );
+}
+
+.semantic button:focus-visible,
+.semantic input[type="submit"]:focus-visible,
+.semantic input[type="button"]:focus-visible {
+  outline: 2px solid var(--color-base-content);
+  outline-offset: 2px;
+}
+
+/* Reset button — DaisyUI btn-secondary */
+.semantic input[type="reset"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding-inline: 1rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-secondary-content);
+  background-color: var(--color-secondary);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-secondary), #000 calc(var(--depth) * 5%));
+  border-radius: var(--radius-field);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow:
+    0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%)) inset,
+    0 3px 2px -2px color-mix(in oklab, var(--color-secondary) calc(var(--depth) * 30%), transparent),
+    0 4px 3px -2px color-mix(in oklab, var(--color-secondary) calc(var(--depth) * 30%), transparent);
+}
+
+@media (hover: hover) {
+  .semantic input[type="reset"]:hover {
+    background-color: color-mix(in oklab, var(--color-secondary), #000 7%);
+  }
+}
+
+.semantic input[type="reset"]:active {
+  translate: 0 0.5px;
+  background-color: color-mix(in oklab, var(--color-secondary), #000 5%);
+  border-color: color-mix(in oklab, var(--color-secondary), #000 7%);
+  box-shadow: none;
+}
+
+.semantic input[type="reset"]:focus-visible {
+  outline: 2px solid var(--color-secondary);
+  outline-offset: 2px;
+}
+
+/* Submit buttons — DaisyUI btn-primary */
+.semantic button[type="submit"],
+.semantic input[type="submit"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding-inline: 1rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary-content);
+  background-color: var(--color-primary);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-primary), #000 calc(var(--depth) * 5%));
+  border-radius: var(--radius-field);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow:
+    0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%)) inset,
+    0 3px 2px -2px color-mix(in oklab, var(--color-primary) calc(var(--depth) * 30%), transparent),
+    0 4px 3px -2px color-mix(in oklab, var(--color-primary) calc(var(--depth) * 30%), transparent);
+}
+
+@media (hover: hover) {
+  .semantic button[type="submit"]:hover,
+  .semantic input[type="submit"]:hover {
+    background-color: color-mix(in oklab, var(--color-primary), #000 7%);
+  }
+}
+
+.semantic button[type="submit"]:active,
+.semantic input[type="submit"]:active {
+  translate: 0 0.5px;
+  background-color: color-mix(in oklab, var(--color-primary), #000 5%);
+  border-color: color-mix(in oklab, var(--color-primary), #000 7%);
+  box-shadow: none;
+}
+
+.semantic button[type="submit"]:focus-visible,
+.semantic input[type="submit"]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Modal trigger button — DaisyUI btn-primary */
+.semantic #modal button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding-inline: 1rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-primary-content);
+  background-color: var(--color-primary);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-primary), #000 calc(var(--depth) * 5%));
+  border-radius: var(--radius-field);
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow:
+    0 0.5px 0 0.5px oklch(100% 0 0 / calc(var(--depth) * 6%)) inset,
+    0 3px 2px -2px color-mix(in oklab, var(--color-primary) calc(var(--depth) * 30%), transparent),
+    0 4px 3px -2px color-mix(in oklab, var(--color-primary) calc(var(--depth) * 30%), transparent);
+}
+
+@media (hover: hover) {
+  .semantic #modal button:hover {
+    background-color: color-mix(in oklab, var(--color-primary), #000 7%);
+  }
+}
+
+.semantic #modal button:active {
+  translate: 0 0.5px;
+  background-color: color-mix(in oklab, var(--color-primary), #000 5%);
+  border-color: color-mix(in oklab, var(--color-primary), #000 7%);
+  box-shadow: none;
+}
+
+.semantic #modal button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Contrast button (used for modal trigger in demo) */
+.semantic button.contrast,
+.semantic .contrast {
+  color: var(--color-neutral-content);
+  background-color: var(--color-neutral);
+  border-color: var(--color-neutral);
+}
+
+.semantic button.contrast:hover,
+.semantic .contrast:hover {
+  opacity: 0.9;
+}
+
+/* ============================================================
+   DETAILS / SUMMARY (ACCORDION)
+   ============================================================ */
+.semantic details {
+  margin-block: 0.75rem;
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-content) 10%, transparent);
+  border-radius: var(--radius-box);
+  overflow: hidden;
+}
+
+.semantic details summary {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-right: 2rem;
+  transition: background-color 0.2s ease;
+}
+
+.semantic details summary:hover {
+  background-color: var(--color-base-200);
+}
+
+.semantic details summary::-webkit-details-marker {
+  display: none;
+}
+
+.semantic details summary::before {
+  content: "";
+  position: absolute;
+  right: 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid var(--color-base-content);
+  border-bottom: 2px solid var(--color-base-content);
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.semantic details[open] summary::before {
+  transform: rotate(-135deg);
+}
+
+.semantic details > :not(summary) {
+  padding: 0 1rem 1rem;
+}
+
+.semantic details > :last-child {
+  margin-bottom: 0;
+}
+
+/* Lists inside accordion content area */
+.semantic details ul,
+.semantic details ol {
+  padding-inline-start: 1.5rem;
+}
+
+/* ============================================================
+   DIALOG / MODAL — DaisyUI modal-box pattern
+   dialog = modal container (fixed, grid-centered)
+   article = modal-box (bg-base-100, p-6, max-w-[32rem])
+   footer = modal-action (mt-6 flex justify-end gap-2)
+   ============================================================ */
+.semantic dialog {
+  border: none;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  max-width: none;
+  width: auto;
+  height: auto;
+  max-height: none;
+  box-shadow: none;
+}
+
+/* Backdrop */
+.semantic dialog::backdrop {
+  background-color: oklch(0% 0 0 / 0.4);
+}
+
+/* Modal-box (article inside dialog)
+   DaisyUI: bg-base-100, max-w-[32rem], w-11/12, p-6,
+   rounded-box, overflow-y-auto, max-h-screen */
+.semantic dialog article {
+  background-color: var(--color-base-100);
+  border-radius: var(--radius-box);
+  padding: 1.5rem;
+  max-width: min(32rem, calc(100vw * 11 / 12));
+  width: 91.666%;
+  max-height: min(32rem, calc(100vh - 5rem));
+  overflow-y: auto;
+  box-shadow: oklch(0% 0 0 / 0.25) 0px 25px 50px -12px;
+}
+
+/* Modal header: close button top-right, title left */
+.semantic dialog header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  max-width: none;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* Close button (DaisyUI close component) */
+.semantic dialog header button[rel="prev"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--color-base-content);
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: var(--radius-field);
+  flex-shrink: 0;
+  line-height: 1;
+  transition: background-color 0.2s ease;
+}
+
+.semantic dialog header button[rel="prev"]::before {
+  content: "✕";
+  line-height: 1;
+}
+
+.semantic dialog header button[rel="prev"]:hover {
+  background-color: var(--color-base-200);
+}
+
+.semantic dialog header h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+/* Modal body (p inside article already has padding from modal-box) */
+.semantic dialog p {
+  padding: 0;
+  margin-block: 0.75rem 0;
+}
+
+/* Modal footer = DaisyUI modal-action: mt-6 flex justify-end gap-2 */
+.semantic dialog footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  padding: 0;
+  border-top: none;
+  max-width: none;
+}
+
+/* Cancel button: base-200 style */
+.semantic dialog footer button:first-child {
+  color: var(--color-base-content);
+  background-color: var(--color-base-200);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-200), #000 calc(var(--depth) * 5%));
+  border-radius: var(--radius-field);
+  padding-inline: 1rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Confirm button: primary style */
+.semantic dialog footer button:last-child {
+  color: var(--color-primary-content);
+  background-color: var(--color-primary);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-primary), #000 calc(var(--depth) * 5%));
+  border-radius: var(--radius-field);
+  padding-inline: 1rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ============================================================
+   PROGRESS BAR
+   DaisyUI pattern: track bg-current/20, fill bg-current
+   ============================================================ */
+.semantic progress {
+  display: block;
+  width: 100%;
+  height: 0.75rem;
+  appearance: none;
+  -webkit-appearance: none;
+  border: none;
+  border-radius: var(--radius-field);
+  overflow: hidden;
+  margin-block: 0.75rem;
+  color: var(--color-primary);
+}
+
+.semantic progress::-webkit-progress-bar {
+  background-color: color-mix(
+    in oklab,
+    var(--color-primary) 20%,
+    transparent
+  );
+  border-radius: var(--radius-field);
+}
+
+.semantic progress::-webkit-progress-value {
+  background-color: var(--color-primary);
+  border-radius: var(--radius-field);
+  transition: width 0.3s ease;
+}
+
+.semantic progress::-moz-progress-bar {
+  background-color: var(--color-primary);
+  border-radius: var(--radius-field);
+}
+
+/* Indeterminate progress */
+.semantic progress:not([value]) {
+  animation: progress-indeterminate 1.5s ease-in-out infinite;
+}
+
+/* ============================================================
+   LOADING (aria-busy)
+   ============================================================ */
+.semantic [aria-busy="true"] {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+/* Loading section items need vertical spacing */
+.semantic article[aria-busy="true"],
+.semantic button[aria-busy="true"] {
+  margin-block-end: 0.75rem;
+}
+
+.semantic article[aria-busy="true"] {
+  width: 100%;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  background-color: var(--color-base-200);
+  border: var(--border) solid
+    color-mix(in oklab, var(--color-base-200), #000 calc(var(--depth) * 5%));
+  border-radius: var(--radius-field);
+}
+
+.semantic article[aria-busy="true"]::after {
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid
+    color-mix(in oklab, var(--color-base-content) 20%, transparent);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Primary button with loading state */
+.semantic button[aria-busy="true"] {
+  color: var(--color-primary-content);
+  background-color: var(--color-primary);
+  border-color: color-mix(in oklab, var(--color-primary), #000 calc(var(--depth) * 5%));
+}
+
+.semantic button[aria-busy="true"]::after {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  border: 2px solid var(--color-primary-content);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  vertical-align: middle;
+}
+
+/* ============================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================ */
+@media (max-width: 48rem) {
+  .semantic main,
+  .semantic header,
+  .semantic footer {
+    padding-inline: 0.75rem;
+  }
+
+  .semantic nav ul {
+    flex-direction: column;
+  }
+
+  .semantic fieldset[role="group"] {
+    flex-direction: column;
+  }
+
+  .semantic fieldset[role="group"] > * {
+    border-radius: 0;
+    margin-inline-start: 0;
+  }
+
+  .semantic fieldset[role="group"] > :not(:first-child) {
+    margin-block-start: calc(var(--border) * -1);
+  }
+
+  .semantic fieldset[role="group"] > :first-child {
+    border-start-start-radius: var(--radius-field);
+    border-start-end-radius: var(--radius-field);
+  }
+
+  .semantic fieldset[role="group"] > :last-child {
+    border-end-start-radius: var(--radius-field);
+    border-end-end-radius: var(--radius-field);
+  }
+
+  .semantic fieldset[role="group"] > :only-child {
+    border-radius: var(--radius-field);
+  }
+}
+
+/* ============================================================
+   ANIMATIONS — global (referenced by name, no scoping needed)
+   ============================================================ */
+@keyframes progress-indeterminate {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

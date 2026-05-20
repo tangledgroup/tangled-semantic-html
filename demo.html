@@ -14,6 +14,11 @@
   </head>
 
   <body class="semantic">
+    <!-- Theme Controller (Pure CSS — hidden radios) -->
+    <input class="theme-controller" type="radio" name="theme" value="auto" id="theme-auto" checked>
+    <input class="theme-controller" type="radio" name="theme" value="light" id="theme-light">
+    <input class="theme-controller" type="radio" name="theme" value="dark" id="theme-dark">
+
     <!-- Header -->
     <header>
       <hgroup>
@@ -22,10 +27,10 @@
       </hgroup>
       <nav>
         <ul>
-          <!-- theme-switcher -->
-          <li><a href="#">Auto</a></li>
-          <li><a href="#">Light</a></li>
-          <li><a href="#">Dark</a></li>
+          <!-- theme-switcher (pure CSS) -->
+          <li><label for="theme-auto"><img src="https://cdn.jsdelivr.net/npm/heroicons@2.2.0/24/outline/device-phone-mobile.svg" alt=""> Auto</label></li>
+          <li><label for="theme-light"><img src="https://cdn.jsdelivr.net/npm/heroicons@2.2.0/24/outline/sun.svg" alt=""> Light</label></li>
+          <li><label for="theme-dark"><img src="https://cdn.jsdelivr.net/npm/heroicons@2.2.0/24/outline/moon.svg" alt=""> Dark</label></li>
         </ul>
       </nav>
     </header>

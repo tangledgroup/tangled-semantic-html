@@ -137,8 +137,8 @@
     --color-error-content: oklch(27% .105 12.094);
   }
 
-  /* Auto dark mode via prefers-color-scheme when no explicit data-theme */
-  &:not([data-theme]) {
+  /* Auto dark mode via prefers-color-scheme — applies when auto radio is checked (no explicit theme override) */
+  &:has(input.theme-controller[value="auto"]:checked) {
     @media (prefers-color-scheme: dark) {
       color-scheme: dark;
 
@@ -248,38 +248,29 @@
         gap: .5rem;
       }
 
-      a {
+      a,
+      label[data-theme-switcher] {
         color: var(--color-primary);
         font-weight: 500;
         padding: .375rem .75rem;
         border-radius: var(--radius-field);
         transition: background-color 0.2s;
+        cursor: pointer;
+        display: inline-block;
 
         &:hover {
           background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
         }
-
-        /* Active theme indicator via data-theme attribute */
       }
     }
 
-    /* Highlight active theme link based on body data-theme */
+    /* Highlight active theme link via :has() theme-controller */
   }
 
-  &[data-theme="light"] > header nav a[data-theme-switcher="light"],
-  &:not([data-theme]) > header nav a[data-theme-switcher="auto"] {
-    color: var(--color-primary);
-    background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
-  }
-
-  &[data-theme="dark"] > header nav a[data-theme-switcher="dark"] {
-    color: var(--color-primary);
-    background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
-  }
-
-  /* DaisyUI :has() theme-controller active indicator */
-  &:has(input.theme-controller[value="light"]:checked) > header nav a[data-theme-switcher="light"],
-  &:has(input.theme-controller[value="dark"]:checked) > header nav a[data-theme-switcher="dark"] {
+  /* Active theme indicator — driven by checked radio */
+  &:has(input.theme-controller[value="auto"]:checked) > header nav label[data-theme-switcher="auto"],
+  &:has(input.theme-controller[value="light"]:checked) > header nav label[data-theme-switcher="light"],
+  &:has(input.theme-controller[value="dark"]:checked) > header nav label[data-theme-switcher="dark"] {
     color: var(--color-primary);
     background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
   }
@@ -1303,7 +1294,8 @@
     header > nav ul {
       gap: .25rem;
 
-      a {
+      a,
+      label[data-theme-switcher] {
         padding: .25rem .5rem;
         font-size: .8125rem;
       }

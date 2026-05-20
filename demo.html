@@ -11,26 +11,13 @@
 
     <!-- semantic.css -->
     <link rel="stylesheet" href="semantic.css" />
-
-    <!-- Theme switcher (minimal JS, same pattern as modal onclick) -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('a[data-theme-switcher]').forEach(function(a) {
-          a.addEventListener('click', function(e) {
-            e.preventDefault();
-            var theme = this.getAttribute('data-theme-switcher');
-            if (theme === 'auto') {
-              document.body.removeAttribute('data-theme');
-            } else {
-              document.body.setAttribute('data-theme', theme);
-            }
-          });
-        });
-      });
-    </script>
   </head>
 
   <body class="semantic">
+    <!-- Theme controller radios (CSS-only theme switching via :has()) -->
+    <input type="radio" name="theme" class="theme-controller" value="auto" id="theme-auto" checked hidden>
+    <input type="radio" name="theme" class="theme-controller" value="light" id="theme-light" hidden>
+    <input type="radio" name="theme" class="theme-controller" value="dark" id="theme-dark" hidden>
     <!-- Header -->
     <header>
       <hgroup>
@@ -39,9 +26,9 @@
       </hgroup>
       <nav>
         <ul>
-          <li><a href="#" data-theme-switcher="auto">Auto</a></li>
-          <li><a href="#" data-theme-switcher="light">Light</a></li>
-          <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+          <li><label for="theme-auto" data-theme-switcher="auto">Auto</label></li>
+          <li><label for="theme-light" data-theme-switcher="light">Light</label></li>
+          <li><label for="theme-dark" data-theme-switcher="dark">Dark</label></li>
         </ul>
       </nav>
     </header>

@@ -22,10 +22,13 @@
         <p>Semantic classless example, without dependencies.</p>
       </hgroup>
       <nav>
+        <input type="radio" name="theme" class="theme-controller" value="auto" id="theme-auto" checked>
+        <input type="radio" name="theme" class="theme-controller" value="light" id="theme-light">
+        <input type="radio" name="theme" class="theme-controller" value="dark" id="theme-dark">
         <ul>
-          <li><a href="#" data-theme-switcher="auto">Auto</a></li>
-          <li><a href="#" data-theme-switcher="light">Light</a></li>
-          <li><a href="#" data-theme-switcher="dark">Dark</a></li>
+          <li><label for="theme-auto" data-theme-switcher="auto">Auto</label></li>
+          <li><label for="theme-light" data-theme-switcher="light">Light</label></li>
+          <li><label for="theme-dark" data-theme-switcher="dark">Dark</label></li>
         </ul>
       </nav>
     </header>

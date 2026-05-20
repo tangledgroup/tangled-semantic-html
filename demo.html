@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light dark">
     <title>Semantic Demo</title>
     <meta name="description" content="Semantic classless example, without dependencies.">
 
@@ -12,6 +11,23 @@
 
     <!-- semantic.css -->
     <link rel="stylesheet" href="semantic.css" />
+
+    <!-- Theme switcher (minimal JS, same pattern as modal onclick) -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('a[data-theme-switcher]').forEach(function(a) {
+          a.addEventListener('click', function(e) {
+            e.preventDefault();
+            var theme = this.getAttribute('data-theme-switcher');
+            if (theme === 'auto') {
+              document.body.removeAttribute('data-theme');
+            } else {
+              document.body.setAttribute('data-theme', theme);
+            }
+          });
+        });
+      });
+    </script>
   </head>
 
   <body class="semantic">
